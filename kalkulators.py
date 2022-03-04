@@ -2,6 +2,7 @@ import numbers
 from math import*
 from tkinter import*
 from unittest.util import strclass
+print("Lai izmantotu apakšējās rindas commandas - kvadrātsakni, procentus vai decimāllogoritmu - ar tikai vienu skaitli, otrā skaitļa vietā ivadīt F2 To access the bottom row functions, that is square root, decimal logarithm or percent, for use with only one number, press F2 instead of inserting a second number.")
 
 def btnClick(number):
     current=e.get() #nolasa esošo skaitli
@@ -18,18 +19,24 @@ def btnCommand(command):
     num1=float(e.get())
     e.delete(0,END)
     return 0
+def comma():
+    global num1
+    numbcomma=int(e.get())
+    e.delete(0,END)
+    numbacomma=int(e.get())
+    num1=float(numbcomma+0.01*numbacomma)
+    return 0
 
 def btnEquals():
     global num2
-    donotuse=str(e.get())
-    if donotuse=="F2":
+    donotuseF2=str(e.get())
+    #Lai izmantotu apakšējās rindas commandas - kvadrātsakni, procentus vai decimāllogoritmu - ar tikai vienu skaitli, otrā skaitļa vietā ivadīt F2
+    #To access the bottom row functions, that is square root, decimal logarithm or percent, for use with only one number, press F2 instead of inserting a second number.
+    if donotuseF2=="F2":
         num2="F2"
     else:
         num2=float(e.get())
-    #if e.isdigit():
-    #    num2= float(e.get())
-    #else:
-    #    num2= str(e.get())
+    
     if num2=="F2":
         if mathOp=="%":
             result=num1*0.01
@@ -65,10 +72,9 @@ def Clear():
     num1=0
     mathOp=""
     return 0
-
 mansLogs=Tk()
 mansLogs.title("Kalkulators")
-e=Entry(mansLogs,width=15, bd=20, bg="black", fg="white",  font=("Daytona",20))
+e=Entry(mansLogs, width=15, bd=20, bg="black", fg="white",  font=("Daytona",20))
 btn0=Button(mansLogs, text="0", padx="40",bd=10 , pady="20", bg="black", fg="white", command=lambda:btnClick(0))
 btn1=Button(mansLogs, text="1", padx="40",bd=10 , pady="20", bg="black", fg="white", command=lambda:btnClick(1))
 btn2=Button(mansLogs, text="2", padx="40",bd=10 , pady="20", bg="black", fg="white", command=lambda:btnClick(2))
@@ -87,10 +93,11 @@ btnminus=Button(mansLogs, text="-", padx="40",bd=10 , pady="20", bg="black", fg=
 btnpluss=Button(mansLogs, text="+", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("+"))
 btnreiz=Button(mansLogs, text="x", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("*"))
 btndev=Button(mansLogs, text="/", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("/"))
-btnF2=Button(mansLogs, text="F2", padx="40", bd=10 ,pady="20", bg="black", fg="red", command=lambda:btnClick("F2"))
-btnprocent=Button(mansLogs, text="%", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("%"))
-btnsqrt=Button(mansLogs, text="√", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("√"))
-btnlg=Button(mansLogs, text="log", padx="40", bd=10 ,pady="20", bg="black", fg="white", command=lambda:btnCommand("log"))
+btnF2=Button(mansLogs, text="F2", padx="40", bd=10 ,pady="20", bg="darkgray", fg="red", command=lambda:btnClick("F2"))
+btnprocent=Button(mansLogs, text="%", padx="40", bd=10 ,pady="20", bg="darkgray", fg="white", command=lambda:btnCommand("%"))
+btnsqrt=Button(mansLogs, text="√", padx="40", bd=10 ,pady="20", bg="darkgray", fg="white", command=lambda:btnCommand("√"))
+btnlg=Button(mansLogs, text="log", padx="40", bd=10 ,pady="20", bg="darkgray", fg="white", command=lambda:btnCommand("log"))
+
 
 
 btn1.grid(row=1,column=1)
